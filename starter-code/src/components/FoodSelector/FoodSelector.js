@@ -1,23 +1,12 @@
 import React from "react";
-
-import listFoods from "../../foods";
+import {connect} from "react-redux";
 
 import FoodBox from "./FoodBox/FoodBox";
 
-export default class FoodSelector extends React.Component {
-
-  constructor(props){
-    super(props);
-
-    this.state = {
-      foods: listFoods
-    }
-
-  }
-
+class FoodSelector extends React.Component {
 
   render(){
-    let foodsHTML = this.state.foods.map((food, index) => (
+    let foodsHTML = this.props.foodsFiltered.map((food, index) => (
       <FoodBox key={index} food={food}/>
     ));
 
@@ -29,3 +18,6 @@ export default class FoodSelector extends React.Component {
   }
 
 }
+
+let mapStateToProps = ({foodsFiltered}) => ({foodsFiltered});
+export default connect(mapStateToProps)(FoodSelector)
