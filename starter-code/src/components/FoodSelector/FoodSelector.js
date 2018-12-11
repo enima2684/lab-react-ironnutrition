@@ -16,7 +16,6 @@ class FoodSelector extends React.Component {
       </div>
     )
   }
-
 }
 
 let mapStateToProps = ({foodsFiltered}) => ({foodsFiltered});

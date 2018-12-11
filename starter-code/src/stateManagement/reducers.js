@@ -25,10 +25,30 @@ export function mySingleReducer(state = initialState, action){
         foodsSelected: addFoodToFoodsSelected(food, [...state.foodsSelected])
       };
 
+
+    case 'food:addNew':
+      // adds a new food to foodsAll from the form
+      let newFood = action.payload;
+      return {
+        ...state,
+        foodsAll: [...state.foodsAll, newFood]
+      };
+
+
+    case 'food:unselect':
+      // removes a given food name from the array foodsSelected
+      let foodName = action.payload;
+      let indexFoodToUnselect = state.foodsSelected.map(thisFood => thisFood.name).indexOf(foodName);
+      let newfoodsSelected = [...state.foodsSelected];
+      newfoodsSelected.splice(indexFoodToUnselect, 1);
+      return {
+        ...state,
+        foodsSelected: newfoodsSelected
+      };
+
     default:
       return state;
   }
-
 }
 
 function addFoodToFoodsSelected(food, foodsSelected){

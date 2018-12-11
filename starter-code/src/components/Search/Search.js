@@ -31,5 +31,5 @@ class Search extends React.Component{
   
 }
 
-let mapStateToProps = ({foodsFiltered}) => ({foodsFiltered});
+let mapStateToProps = (state) => ({foodsFiltered: state.foodsFiltered});
 export default connect(mapStateToProps)(Search)
